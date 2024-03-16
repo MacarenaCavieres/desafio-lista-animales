@@ -82,14 +82,14 @@ btnAgregar.addEventListener("click", (e) => {
     const inputNombreMascota = nombreMascota.value;
     const inputTipo = tipo.value;
     const inputEnfermedad = enfermedad.value;
-    console.log(inputPropietario);
-    console.log(inputTelefono);
-    console.log(inputDireccion);
-    console.log(inputNombreMascota);
-    console.log(inputTipo);
-    console.log(inputEnfermedad);
+    // console.log(inputPropietario);
+    // console.log(inputTelefono);
+    // console.log(inputDireccion);
+    // console.log(inputNombreMascota);
+    // console.log(inputTipo);
+    // console.log(inputEnfermedad);
 
-    const perro1 = new Mascota(
+    const mascota = new Mascota(
         inputPropietario,
         inputDireccion,
         inputTelefono,
@@ -99,33 +99,7 @@ btnAgregar.addEventListener("click", (e) => {
     );
     // console.log(perro1);
 
-    resultado.innerHTML += `${perro1.datosPropietario()}; ${perro1.tipoAnimal()},su nombre es ${
-        perro1.getNombreMascota
-    } y la enfermedad es ${perro1.getMotivoConsulta}`;
-
-    const gato1 = new Mascota(
-        inputPropietario,
-        inputDireccion,
-        inputTelefono,
-        inputTipo,
-        inputNombreMascota,
-        inputEnfermedad
-    );
-
-    resultado.innerHTML += `${gato1.datosPropietario()}; ${gato1.tipoAnimal()},su nombre es ${
-        gato1.getNombreMascota
-    } y la enfermedad es ${gato1.getMotivoConsulta}`;
-
-    const conejo1 = new Mascota(
-        inputPropietario,
-        inputDireccion,
-        inputTelefono,
-        inputTipo,
-        inputNombreMascota,
-        inputEnfermedad
-    );
-
-    resultado.innerHTML += `${conejo1.datosPropietario()}; ${conejo1.tipoAnimal()},su nombre es ${
-        conejo1.getNombreMascota
-    } y la enfermedad es ${conejo1.getMotivoConsulta}`;
+    resultado.innerHTML += `<li>${mascota.datosPropietario()}; 
+    ${mascota.tipoAnimal()}, su nombre es ${mascota.getNombreMascota} 
+    y la enfermedad es ${mascota.getMotivoConsulta}</li>`;
 });
