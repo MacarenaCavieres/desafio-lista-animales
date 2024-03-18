@@ -6,6 +6,11 @@ const tipo = document.querySelector("#tipo");
 const enfermedad = document.querySelector("#enfermedad");
 const btnAgregar = document.querySelector("#btnAgregar");
 const resultado = document.querySelector("#resultado");
+const usuarioInput = document.querySelector(".usuarioInput");
+const telefonoInput = document.querySelector(".telefonoInput");
+const direccionInput = document.querySelector(".direccionInput");
+const mascotaInput = document.querySelector(".mascotaInput");
+const consultaInput = document.querySelector(".consultaInput");
 
 class Propietario {
     #nombrePropietario;
@@ -82,12 +87,29 @@ btnAgregar.addEventListener("click", (e) => {
     const inputNombreMascota = nombreMascota.value;
     const inputTipo = tipo.value;
     const inputEnfermedad = enfermedad.value;
-    // console.log(inputPropietario);
-    // console.log(inputTelefono);
-    // console.log(inputDireccion);
-    // console.log(inputNombreMascota);
-    // console.log(inputTipo);
-    // console.log(inputEnfermedad);
+    const regexLetras = /[a-zA-Z]/gim;
+    const regexNumeros = /\d/gim;
+
+    if (!regexLetras.test(inputPropietario)) {
+        usuarioInput.innerText = "Debe ingresar un nombre válido";
+        return;
+    }
+    if (!regexNumeros.test(inputTelefono)) {
+        telefonoInput.innerText = "Debe ingresar un número válido";
+        return;
+    }
+    if (!inputDireccion.trim()) {
+        direccionInput.innerText = "Debe ingresar una dirección";
+        return;
+    }
+    if (!inputNombreMascota.trim()) {
+        mascotaInput.innerText = "Debe ingresar un nombre de mascota";
+        return;
+    }
+    if (!inputEnfermedad.trim()) {
+        consultaInput.innerText = "Debe ingresar motivo de consulta";
+        return;
+    }
 
     const mascota = new Mascota(
         inputPropietario,
@@ -97,7 +119,6 @@ btnAgregar.addEventListener("click", (e) => {
         inputNombreMascota,
         inputEnfermedad
     );
-    // console.log(perro1);
 
     resultado.innerHTML += `<li>${mascota.datosPropietario()}; 
     ${mascota.tipoAnimal()}, su nombre es ${mascota.getNombreMascota} 
